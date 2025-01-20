@@ -1,4 +1,4 @@
-// Récupérer les projets depuis l'API
+// Récupérer les projets
 export async function fetchWorks(API_URL) {
     try {
         const res = await fetch(`${API_URL}/works`);

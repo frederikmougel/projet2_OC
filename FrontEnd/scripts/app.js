@@ -4,9 +4,12 @@ import { fetchWorks, renderWorks } from './works.js';
 const API_URL = 'http://localhost:5678/api';
 
 document.addEventListener('DOMContentLoaded', async () => {
+    const token = sessionStorage.getItem('token');
+    const modifierText = document.querySelector('.edit-btn');
+    if (token) modifierText.classList.add('logged');
+
     const categoriesContainer = document.querySelector('.categories');
     const portfolioContainer = document.querySelector('.gallery');
-
     try {
         // Récupérer les catégories et les travaux
         const [categories, works] = await Promise.all([

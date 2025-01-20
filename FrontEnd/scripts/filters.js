@@ -1,4 +1,4 @@
-// Récupérer les catégories depuis l'API
+// Récupérer les catégories
 export async function fetchCategories(API_URL) {
     try {
         const res = await fetch(`${API_URL}/categories`);
