@@ -21,10 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderWorks(works, portfolioContainer);
 
         const token = sessionStorage.getItem('token');
-        if (token) {
-            sessionStorage.setItem('categories', JSON.stringify(categories));
-            sessionStorage.setItem('works', JSON.stringify(works));
-        }
+        if (token) sessionStorage.setItem('works', JSON.stringify(works));
 
     } catch (error) {
         console.error('Erreur lors du chargement des données :', error);

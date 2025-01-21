@@ -7,6 +7,9 @@ export async function fetchCategories() {
         if (!res.ok) throw new Error('Erreur lors de la récupération des catégories');
 
         const categories = await res.json();
+        const token = sessionStorage.getItem('token');
+        if (token) sessionStorage.setItem('categories', JSON.stringify(categories));
+
         const uniqueCategories = new Set(['Tous', ...categories.map(cat => cat.name)]);
         return Array.from(uniqueCategories);
     } catch (error) {
