@@ -1,5 +1,7 @@
+const API_URL = 'http://localhost:5678/api';
+
 // Récupérer les catégories
-export async function fetchCategories(API_URL) {
+export async function fetchCategories() {
     try {
         const res = await fetch(`${API_URL}/categories`);
         if (!res.ok) throw new Error('Erreur lors de la récupération des catégories');

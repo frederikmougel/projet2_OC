@@ -40,7 +40,7 @@
 	<section id="portfolio">
 		<div class="portfolio-title-container">
 			<h2>Mes Projets</h2>
-			<div class="edit-btn">
+			<div id="open-modal-btn" class="edit-btn">
 				<i class="fa-regular fa-pen-to-square"></i>
 				<p>modifier</p>
 			</div>
@@ -70,7 +70,20 @@
 		</ul>
 	</nav>
 </footer>
+
+<div id="modal" class="modal">
+	<div class="modal-container">
+		<i id="close-modal-btn" class="close fa-solid fa-xmark"></i>
+		<div class="modal-content">
+			<p class="modal-title">Galerie photo</h>
+			<div class="modal-portfolio"></div>
+			<button>Ajouter une photo</button>
+		</div>
+	</div>
+</div>
+
 </body>
 </html>
 
 <script type="module" src="./scripts/app.js" defer></script>
+<script type="module" src="./scripts/modal.js" defer></script>
