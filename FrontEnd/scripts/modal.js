@@ -9,7 +9,6 @@ const galleryView = document.getElementById('gallery-view');
 const addPhotoView = document.getElementById('add-photo-view');
 const fileUpload = document.getElementById('file-upload');
 const fileBtnContainer = document.getElementById('file-btn-container');
-const titleInput = document.getElementById('title');
 const categoriesSelect = document.getElementById('categories');
 const addPhotoForm = document.getElementById('add-photo-form');
 
@@ -64,8 +63,7 @@ function closeModal() {
 
 // Reset le champ de fichier et le conteneur de boutons
 function resetFileInput() {
-    titleInput.value = ''
-    fileUpload.value = '';
+    addPhotoForm.reset();
     fileBtnContainer.style.padding = '20px 100px';
     fileBtnContainer.innerHTML = `
         <i class="fa-regular fa-image image-icon"></i>
@@ -129,6 +127,14 @@ function renderModalWorks() {
 function renderModalCategories() {
     const categories = JSON.parse(sessionStorage.getItem('categories')) || [];
     categoriesSelect.innerHTML = '';
+
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = ' ';
+    defaultOption.disabled = true;
+    defaultOption.selected = true;
+    categoriesSelect.appendChild(defaultOption);
+
     categories
         .filter(category => category && category.name !== 'Tous')
         .forEach(category => {
@@ -156,6 +162,7 @@ addPhotoForm.addEventListener('submit', async function (event) {
     try {
         await addWork(formData);
         closeModal();
+        addPhotoForm.reset();
     } catch (error) {
         console.error('Erreur:', error);
         alert('Une erreur est survenue lors de l\'ajout du projet.');

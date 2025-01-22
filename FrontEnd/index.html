@@ -10,7 +10,7 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
 		integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-		crossorigin="anonymous" referrerpolicy="no-referrer" />
+		crossorigin="anonymous" referrerpolicy="no-referrer" >
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
@@ -91,11 +91,13 @@
 						</label>
 						<p>jpg, png : 4mo max</p>
 					</div>
-					<input type="file" id="file-upload" name="image" />
+					<input type="file" id="file-upload" name="image">
 					<label class="label-form" for="title">Titre</label>
 					<input type="text" name="title" id="title" required>
 					<label class="label-form" for="categories">Catégorie</label>
-					<select name="category" id="categories" required></select>
+					<select name="category" id="categories" required>
+						<option value="" label=" " disabled selected></option>
+					</select>
 					<div class="separator"></div>
 					<button type="submit">Valider</button>
 				</form>
@@ -104,8 +106,8 @@
 	</div>
 </div>
 
+<script type="module" src="./scripts/app.js"></script>
+<script type="module" src="./scripts/modal.js"></script>
 </body>
 </html>
 
-<script type="module" src="./scripts/app.js" defer></script>
-<script type="module" src="./scripts/modal.js" defer></script>
