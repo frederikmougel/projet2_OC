@@ -131,6 +131,7 @@ li:hover {
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
+	margin-top: 100px;
 }	
 
 #portfolio .portfolio-title-container h2 {
@@ -175,7 +176,7 @@ li:hover {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label, #loginForm label, #add-photo-form .label-form {
+#contact label, #loginForm label {
 	margin: 2em 0 1em 0;
 }
 #contact textarea {
@@ -287,11 +288,13 @@ footer nav ul {
 }
 
 .modal-container {
+	display: flex;
     position: relative;
     background-color: white;
     border-radius: 8px;
     text-align: center;
-    width: 60%;
+    width: 630px;
+	height: 90%;
 }
 
 .close, .back {
@@ -316,32 +319,45 @@ footer nav ul {
 }
 
 .modal-content {
-    padding: 60px 100px;
-	max-height: 80vh;
+    padding: 45px 95px;
+	flex: 1;
+	display: flex;
+}
+
+
+#gallery-view{
+	flex: 1;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .modal-title {
-    font-size: 30px;
+	font-size: 30px;
+}
+
+.modal-portfolio-container{
+	flex: 1;
+	padding: 50px 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.373);
+	overflow-y: auto;
 }
 
 .modal-portfolio {
-	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-    padding: 50px 0;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.373);
-    column-gap: 6px;
+    column-gap: 2%;
     row-gap: 10px;
 }
 
 .modal-portfolio figure {
     height: fit-content;
-    width: fit-content;
+    width: 18.4%;
     position: relative;
 }
 
+
 .modal-portfolio img {
-    height: 100px;
+	width: 100%;
 }
 
 .modal-portfolio i {
@@ -363,16 +379,29 @@ footer nav ul {
     background-color: #1D6154;
     border: none;
     padding: 10px;
-    margin: 40px auto 0 auto;
-    width: 180px;
+    margin: 30px auto 0 auto;
+    width: 220px;
     text-align: center;
     border-radius: 60px;
     cursor: pointer;
 }
 
+#add-photo-view{
+	flex-direction: column;
+	width: 100%;
+	box-sizing: content-box;
+}
+
 #add-photo-form {
-    width: 100%;
-    margin: auto;
+	flex-direction: column;
+    flex: 1;
+	justify-content: space-between;
+	margin-top: 40px;
+}
+
+#add-photo-form .label-form{
+	margin-top: 25px;
+	margin-bottom: 10px;
 }
 
 #file-upload {
@@ -384,22 +413,23 @@ footer nav ul {
     flex-direction: column;
     background-color: #E8F1F6;
     padding: 20px 100px;
-    height: 150px;
+    height: 140px;
     border-radius: 4px;
-    margin-top: 50px;
     justify-content: center;
     align-items: center;
+	margin-bottom: 10px;
 }
 
 .file-btn-container .image-icon {
-    color: #CBD6DC;
+    color: #bcc6cc;
     text-align: center;
-    font-size: 80px;
+    font-size: 70px;
 }
 
 .file-btn-container p {
     color: #444444;
     text-align: center;
+	font-size: 12px;
 }
 
 .custom-file-upload {
@@ -410,7 +440,7 @@ footer nav ul {
     border-radius: 30px;
     text-align: center;
     width: fit-content;
-    margin: 10px auto;
+    margin: 10px auto 5px auto;
 }
 
 .file-btn-container img {

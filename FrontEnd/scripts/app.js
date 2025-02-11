@@ -19,9 +19,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         renderCategories(categories, categoriesContainer, portfolioContainer);
         renderWorks(works, portfolioContainer);
-
         const token = sessionStorage.getItem('token');
-        if (token) sessionStorage.setItem('works', JSON.stringify(works));
+        if (token) {
+            sessionStorage.setItem('works', JSON.stringify(works));
+            categoriesContainer.innerHTML = '';
+        }
 
     } catch (error) {
         console.error('Erreur lors du chargement des données :', error);

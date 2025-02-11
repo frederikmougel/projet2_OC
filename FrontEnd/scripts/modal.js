@@ -43,7 +43,7 @@ window.onclick = function(event) {
 
 // Afficher la vue galerie
 function showGalleryView() {
-    galleryView.style.display = 'block';
+    galleryView.style.display = 'flex';
     addPhotoView.style.display = 'none';
     backModalBtn.style.display = 'none';
 }
@@ -51,7 +51,7 @@ function showGalleryView() {
 // Afficher la vue ajout de photo
 function showAddPhotoView() {
     galleryView.style.display = 'none';
-    addPhotoView.style.display = 'block';
+    addPhotoView.style.display = 'flex';
     backModalBtn.style.display = 'block';
 }
 
