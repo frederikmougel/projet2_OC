@@ -93,7 +93,7 @@
 						</label>
 						<p>jpg, png : 4mo max</p>
 					</div>
-					<input type="file" id="file-upload" name="image">
+					<input type="file" id="file-upload" name="image" required>
 					<label class="label-form" for="title">Titre</label>
 					<input type="text" name="title" id="title" required>
 					<label class="label-form" for="categories">Catégorie</label>
@@ -101,7 +101,7 @@
 						<option value="" label=" " disabled selected></option>
 					</select>
 					<div class="separator"></div>
-					<button type="submit">Valider</button>
+					<button type="submit" id="submit-btn" disabled>Valider</button>
 				</form>
 			</div>
 		</div>
