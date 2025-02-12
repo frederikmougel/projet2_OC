@@ -2,10 +2,23 @@ import { fetchCategories, renderCategories } from './filters.js';
 import { fetchWorks, renderWorks } from './works.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    //TOKEN -> EDIT BUTTON DISPLAY
+    //TOKEN -> EDIT BUTTON DISPLAY & LOGIN NAV DISPLAY
     const token = sessionStorage.getItem('token');
     const modifierText = document.querySelector('.edit-btn');
-    if (token) modifierText.classList.add('logged');
+    const authLink = document.getElementById('auth-link');
+
+    if (token) {
+        modifierText.classList.add('logged');
+
+        authLink.textContent = 'logout';
+        authLink.href = '';
+        authLink.addEventListener('click', () => {
+            sessionStorage.removeItem('token');
+        });
+    } else {
+        authLink.textContent = 'login';
+        authLink.href = './login.html';
+    }
 
 
     //CATEGORIES ET TRAVAUX
@@ -19,7 +32,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         renderCategories(categories, categoriesContainer, portfolioContainer);
         renderWorks(works, portfolioContainer);
-        const token = sessionStorage.getItem('token');
         if (token) {
             sessionStorage.setItem('works', JSON.stringify(works));
             categoriesContainer.innerHTML = '';
