@@ -2,6 +2,7 @@ import { categories, works } from "./app.js";
 import { addWork, deleteWork } from "./works.js";
 
 const modal = document.getElementById('modal');
+const openModalBtnHeader = document.getElementById('header-black');
 const openModalBtn = document.getElementById('open-modal-btn');
 const closeModalBtn = document.getElementById('close-modal-btn');
 const backModalBtn = document.getElementById('back-modal-btn');
@@ -17,10 +18,13 @@ const submitBtn = document.getElementById("submit-btn");
 let previousFile = null;
 
 // Fonction pour afficher la modale
+openModalBtnHeader.onclick = function() {
+    openModal();
+}
+
+// Fonction pour afficher la modale
 openModalBtn.onclick = function() {
-    modal.style.display = 'flex';
-    showGalleryView();
-    renderModalWorks();
+    openModal();
 }
 
 // Fonction pour fermer la modale
@@ -63,6 +67,13 @@ function showAddPhotoView() {
 function closeModal() {
     modal.style.display = 'none';
     resetFileInput();
+}
+
+// Ouvrir la modale
+function openModal() {
+    modal.style.display = 'flex';
+    showGalleryView();
+    renderModalWorks();
 }
 
 // Reset le champ de fichier et le conteneur de boutons
