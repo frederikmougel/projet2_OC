@@ -1,8 +1,17 @@
 import { fetchCategories, renderCategories } from './filters.js';
 import { fetchWorks, renderWorks } from './works.js';
 
+export let works = []
+export let categories = []
+export function setWorks(w){
+    works = w
+}
+export function setCategories(c){
+    categories = c
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
-    //TOKEN -> EDIT BUTTON DISPLAY & LOGIN NAV DISPLAY
+    //LOGGED MODE (TOKEN) -> EDIT BUTTON DISPLAY & LOGIN NAV DISPLAY & HEADER BLACK DISPLAY
     const token = sessionStorage.getItem('token');
     const modifierText = document.querySelector('.edit-btn');
     const authLink = document.getElementById('auth-link');
@@ -31,7 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const categoriesContainer = document.querySelector('.categories');
     const portfolioContainer = document.querySelector('.gallery');
     try {
-        const [categories, works] = await Promise.all([
+        await Promise.all([
             fetchCategories(),
             fetchWorks(),
         ]);
@@ -39,7 +48,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderCategories(categories, categoriesContainer, portfolioContainer);
         renderWorks(works, portfolioContainer);
         if (token) {
-            sessionStorage.setItem('works', JSON.stringify(works));
             categoriesContainer.innerHTML = '';
         }
 

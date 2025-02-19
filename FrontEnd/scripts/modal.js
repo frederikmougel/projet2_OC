@@ -1,3 +1,4 @@
+import { categories, works } from "./app.js";
 import { addWork, deleteWork } from "./works.js";
 
 const modal = document.getElementById('modal');
@@ -121,7 +122,6 @@ fileUpload.addEventListener('change', function(event) {
 function renderModalWorks() {
     const portfolioModalContainer = document.querySelector('.modal-portfolio');
     portfolioModalContainer.innerHTML = '';
-    const works = JSON.parse(sessionStorage.getItem('works')) || [];
     works.forEach(work => {
         const figure = document.createElement('figure');
         figure.setAttribute('data-id', work.id);
@@ -144,7 +144,6 @@ function renderModalWorks() {
 
 // Afficher les catégories dans le form de la modale
 function renderModalCategories() {
-    const categories = JSON.parse(sessionStorage.getItem('categories')) || [];
     categoriesSelect.innerHTML = '';
 
     const defaultOption = document.createElement('option');

@@ -1,3 +1,5 @@
+import { setCategories } from "./app.js";
+
 const API_URL = 'http://localhost:5678/api';
 
 // Récupérer les catégories
@@ -7,11 +9,9 @@ export async function fetchCategories() {
         if (!res.ok) throw new Error('Erreur lors de la récupération des catégories');
 
         const categories = await res.json();
-        const token = sessionStorage.getItem('token');
-        if (token) sessionStorage.setItem('categories', JSON.stringify(categories));
+        setCategories(categories)
 
-        const uniqueCategories = new Set(['Tous', ...categories.map(cat => cat.name)]);
-        return Array.from(uniqueCategories);
+        return categories
     } catch (error) {
         console.error(error);
         return ['Tous'];
@@ -21,7 +21,10 @@ export async function fetchCategories() {
 // Afficher les catégories
 export function renderCategories(categories, categoriesContainer, portfolioContainer) {
     categoriesContainer.innerHTML = '';
-    categories.forEach(category => {
+    const updatedCategories = new Set(['Tous', ...categories.map(cat => cat.name)]);
+    const newCategories = Array.from(updatedCategories);
+
+    newCategories.forEach(category => {
         const button = document.createElement('button');
         button.textContent = category;
         button.dataset.category = category;

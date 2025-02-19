@@ -1,3 +1,5 @@
+import { setWorks, works } from "./app.js";
+
 const API_URL = 'http://localhost:5678/api';
 
 // Récupérer les projets
@@ -5,7 +7,10 @@ export async function fetchWorks() {
     try {
         const res = await fetch(`${API_URL}/works`);
         if (!res.ok) throw new Error('Erreur lors de la récupération des travaux');
-        return await res.json();
+        const works = await res.json();
+        setWorks(works)
+
+        return works;
     } catch (error) {
         console.error(error);
         return [];
@@ -47,9 +52,8 @@ export async function deleteWork(id) {
 
         if (!res.ok) throw new Error(`Erreur lors de la suppression du travail avec l'ID ${id}`);
         
-        const works = JSON.parse(sessionStorage.getItem('works')) || [];
-        const updatedWorks = works.filter(work => work.id !== id);
-        sessionStorage.setItem('works', JSON.stringify(updatedWorks));
+        const updatedWorks = [...works].filter(work => work.id !== id);
+        setWorks(updatedWorks)
 
         const portfolioModalContainer = document.querySelector('.modal-portfolio');
         const workModalElement = portfolioModalContainer.querySelector(`[data-id="${id}"]`);
@@ -78,9 +82,9 @@ export async function addWork(formData) {
 
         const newWork = await res.json();
 
-        const works = JSON.parse(sessionStorage.getItem('works')) || [];
-        works.push(newWork);
-        sessionStorage.setItem('works', JSON.stringify(works));
+        let updatedWorks = [...works]
+        updatedWorks.push(newWork)
+        setWorks(updatedWorks)
 
         const portfolioModalContainer = document.querySelector('.modal-portfolio');
         const figure = document.createElement('figure');
