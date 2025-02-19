@@ -6,9 +6,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     const token = sessionStorage.getItem('token');
     const modifierText = document.querySelector('.edit-btn');
     const authLink = document.getElementById('auth-link');
+    const headerBlack = document.getElementById('header-black');
+    const headerContent = document.getElementById('header-content');
 
     if (token) {
         modifierText.classList.add('logged');
+
+        headerBlack.style.display = "flex"
+
+        headerContent.style.margin = "90px 0"
 
         authLink.textContent = 'logout';
         authLink.href = '';

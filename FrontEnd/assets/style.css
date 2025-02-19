@@ -55,9 +55,28 @@ body {
 }
 header {
 	display: flex;
-	justify-content: space-between;
-	margin: 50px 0
+	flex-direction: column;
 }
+.header-black{
+	width: 100vw;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	background: black;
+	color: white;
+	display: none;
+	justify-content: center;
+	padding: 20px;
+	z-index: 1000;
+	gap: 10px;
+}
+
+#header-content{
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0;
+}
+
 section {
 	margin: 50px 0
 }
